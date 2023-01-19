@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import ResEdit from "resedit";
+import * as ResEdit from "resedit";
 import * as path from "path";
 import * as fs from "fs";
 import { cwd } from "process";
