@@ -28,6 +28,7 @@ async function init() {
   }
   copyFile("app.ico");
   copyFile("pkg.config.js");
+  console.log("-- pkg-edit init success --");
 }
 
 async function build() {
@@ -49,6 +50,12 @@ async function build() {
   // env check
   if (!fs.existsSync(file)) error(`${file} not exists!`);
   if (!fs.existsSync(icon)) error(`${icon} not exists!`);
+
+  if (fs.statSync(icon).size > 100 * 1024) {
+    throw new Error(
+      "When the icon file exceeds 100kb, the program may not open"
+    );
+  }
 
   let data = fs.readFileSync(file);
   let exe = ResEdit.NtExecutable.from(data);
@@ -100,8 +107,8 @@ async function build() {
     `${name}-${version}.exe` // out file name
   );
   fs.writeFileSync(outFile, Buffer.from(newBinary));
-  console.log("-- success --");
-  console.log(`pkg-edgt out to: ${outFile}`);
+  console.log("-- pkg-edit build success --");
+  console.log(`pkg-edit out to: ${outFile}`);
 }
 
 const args = process.argv.slice(2);
