@@ -40,11 +40,11 @@ async function build() {
   const {
     file,
     icon,
-    version,
-    description,
-    company,
-    name,
-    copyright,
+    version = "1.0.0",
+    description = "",
+    company = "",
+    name = "",
+    copyright = "",
   } = require(CONFIG_FILE);
 
   // env check

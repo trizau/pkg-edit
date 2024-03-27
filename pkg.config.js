@@ -7,8 +7,7 @@ module.exports = {
   // modifier
   icon: "app.ico",
   name: packageJSON.name,
-  description: packageJSON.description || "description",
-  company: "company",
-  version: packageJSON.version || "1.0.0",
+  description: packageJSON.description,
+  version: packageJSON.version,
   copyright: "Copyright-" + new Date().getFullYear(),
 };
